@@ -1,0 +1,1258 @@
+{
+	"_version": "1.8.0",
+	"sap.cloud": {
+		"service": "mcconedashboard"
+	},
+	"sap.app": {
+		"id": "com.sap.mcconedashboard",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "24.8.53"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"crossNavigation": {
+			"inbounds": {
+				"intent1": {
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "mcconedashboard",
+					"action": "Display",
+					"title": "{{appTitle}}",
+					"subTitle": "{{appDescription}}"
+				}
+			}
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "apim/ic/sap/opu/odata/sap/ZS_MCC_CRITSIT_DASHBOARD_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"mcsService": {
+				"uri": "apim/ic/sap/opu/odata/sap/ZS_DBS_MCS_DASHBOARD_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"saveFavorites": {
+				"uri": "apim/ic/sap/opu/odata/svt/USER_PROFILE_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"AppDepSrv": {
+				"uri": "apim/ic/sap/opu/odata/sap/ZS_APP_DEP_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"MCCOnedashboard": {
+				"uri": "apimcf/mcc-service/odata/v2/MCCOnedashboard/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"MCCIssueTracking": {
+				"uri": "apimcf/mcc-service/odata/v2/MCCIssueTracking/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"SolutionHubService": {
+				"uri": "apimcf/mcc-service/odata/v2/SolutionHub/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"outageMainService": {
+				"uri": "apim/rza/Dashboards/MCCOne/Services/mccone.xsodata",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"ach": "",
+		"resources": "resources.json"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "image/UX.png",
+			"favIcon": "image/UX.png",
+			"phone": "image/UX.png",
+			"phone@2": "image/UX.png",
+			"tablet": "image/UX.png",
+			"tablet@2": "image/UX.png"
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"config": {
+			"categoryResource": "IMFIT_DBS_MCC",
+			"ignoreComponent": false,
+			"sapFiori2Adaptation": true,
+			"appName": "MCC One Dashboard",
+			"reportingId": "dc8ddd44-8c5f-40f1-a10a-de1c7e9c3e6e",
+			"reportingHosts": [
+				"app.dispatcher.hana.ondemand.com",
+				"fiorilaunchpad.sap.com",
+				"sapit-home-prod-004.launchpad.cfapps.eu10.hana.ondemand.com",
+				"sapit-customersupport-prod-kestrel.launchpad.cfapps.eu10.hana.ondemand.com",
+				"mcconedashboard.cfapps.eu10-004.hana.ondemand.com"
+			],
+			"fullWidth": true
+		},
+		"rootView": {
+			"viewName": "com.sap.mcconedashboard.view.Main",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {},
+				"sap.ui.table": {
+					"minVersion": ""
+				},
+				"sap.ui.unified": {
+					"minVersion": ""
+				},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sap.mcconedashboard.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"mainModelNoBatch": {
+				"dataSource": "mainService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": false,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"mcsModel": {
+				"dataSource": "mcsService",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"userProfile": {
+				"dataSource": "saveFavorites",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"appDepModel": {
+				"dataSource": "AppDepSrv",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"appDepModelNoBatch": {
+				"dataSource": "AppDepSrv",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": false,
+				"settings": {
+					"useBatch": false,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"subModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				},
+				"dataSource": "MCCOnedashboard",
+				"preload": true
+			},
+			"mccIssueTracking": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				},
+				"dataSource": "MCCIssueTracking",
+				"preload": true
+			},
+			"solutionHub": {
+				"dataSource": "SolutionHubService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					},
+					"defaultBindingMode": "TwoWay",
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				}
+			},
+			"outageMainModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true,
+					"disableHeadRequestForToken": true,
+					"headers": {
+						"AppIdentifier": "vFkzmhgGIsokhbTq20b492pFxGMABxLU"
+					}
+				},
+				"dataSource": "outageMainService",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "com.sap.mcconedashboard.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"clearControlAggregation": false,
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				}
+			},
+			"routes": [
+				{
+					"name": "Global",
+					"pattern": ":?query:",
+					"target": [
+						"Global"
+					]
+				},
+				{
+					"name": "GlobalMobile",
+					"pattern": "GlobalMobile/:?query:",
+					"target": [
+						"GlobalMobile"
+					]
+				},
+				{
+					"name": "MCCTags",
+					"pattern": "MCCTags/{Description}/:?query:",
+					"target": [
+						"MCCTags"
+					]
+				},
+				{
+					"name": "EngagementTaskForces",
+					"pattern": "EngagementTaskForces/:?query:",
+					"target": [
+						"EngagementTaskForces"
+					]
+				},
+				{
+					"name": "EngagementTaskForcesMobile",
+					"pattern": "EngagementTaskForcesMobile/:?query:",
+					"target": [
+						"EngagementTaskForcesMobile"
+					]
+				},
+				{
+					"name": "MCCTagsMobile",
+					"pattern": "MCCTagsMobile/{Description}/:?query:",
+					"target": [
+						"MCCTagsMobile"
+					]
+				},
+				{
+					"name": "Tag",
+					"pattern": "Tag/{Description}/:?query:",
+					"target": [
+						"MCCTags"
+					]
+				},
+				{
+					"name": "TagMobile",
+					"pattern": "TagMobile/{Description}/:?query:",
+					"target": [
+						"MCCTagsMobile"
+					]
+				},
+				{
+					"name": "Customer",
+					"pattern": "Customer/{ErpCustNo}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"Customer"
+					]
+				},
+				{
+					"name": "CustomerMobile",
+					"pattern": "CustomerMobile/{ErpCustNo}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"CustomerMobile"
+					]
+				},
+				{
+					"name": "CriticalCustomerManagement",
+					"pattern": "CriticalCustomerManagement/:?query:",
+					"target": [
+						"CriticalCustomerManagement"
+					]
+				},
+				{
+					"name": "CriticalCustomerManagementMobile",
+					"pattern": "CriticalCustomerManagementMobile/:?query:",
+					"target": [
+						"CriticalCustomerManagementMobile"
+					]
+				},
+				{
+					"name": "Outages",
+					"pattern": "Outages/:?query:",
+					"target": [
+						"Outages"
+					]
+				},
+				{
+					"name": "OutagesMobile",
+					"pattern": "OutagesMobile/:?query:",
+					"target": [
+						"OutagesMobile"
+					]
+				},
+				{
+					"name": "CriticalPeriodCoverage",
+					"pattern": "CriticalPeriodCoverage/:?query:",
+					"target": [
+						"CriticalPeriodCoverage"
+					]
+				},
+				{
+					"name": "MissionRadar",
+					"pattern": "MissionRadar/:?query:",
+					"target": [
+						"MissionRadar"
+					]
+				},
+				{
+					"name": "CriticalPeriodCoverageMobile",
+					"pattern": "CriticalPeriodCoverageMobile/:?query:",
+					"target": [
+						"CriticalPeriodCoverageMobile"
+					]
+				},
+				{
+					"name": "CustomerVisits",
+					"pattern": "CustomerVisits/:?query:",
+					"target": [
+						"CustomerVisits"
+					]
+				},
+				{
+					"name": "CustomerVisitsMobile",
+					"pattern": "CustomerVisitsMobile/:?query:",
+					"target": [
+						"CustomerVisitsMobile"
+					]
+				},
+				{
+					"name": "ProjectsOnWatch",
+					"pattern": "ProjectsOnWatch/:?query:",
+					"target": [
+						"ProjectsOnWatch"
+					]
+				},
+				{
+					"name": "CREEngagements",
+					"pattern": "CREEngagements/:?query:",
+					"target": [
+						"CREEngagements"
+					]
+				},
+				{
+					"name": "ProjectsOnWatchMobile",
+					"pattern": "ProjectsOnWatchMobile/:?query:",
+					"target": [
+						"ProjectsOnWatchMobile"
+					]
+				},
+				{
+					"name": "CustomerTags",
+					"pattern": "CustomerTags/:?query:",
+					"target": [
+						"CustomerTags"
+					]
+				},
+				{
+					"name": "CriticalEventCoverage",
+					"pattern": "CriticalEventCoverage/:?query:",
+					"target": [
+						"CriticalEventCoverage"
+					]
+				},
+				{
+					"name": "CriticalEventCoverageMobile",
+					"pattern": "CriticalEventCoverageMobile/:?query:",
+					"target": [
+						"CriticalEventCoverageMobile"
+					]
+				},
+				{
+					"name": "CREEngagementsMobile",
+					"pattern": "CREEngagementsMobile/:?query:",
+					"target": [
+						"CREEngagementsMobile"
+					]
+				},
+				{
+					"name": "CriticalEventCoverageDetails",
+					"pattern": "CriticalEventCoverageDetails/{ObjectID}/:?query:",
+					"target": [
+						"CriticalEventCoverageDetails"
+					]
+				},
+				{
+					"name": "CriticalEventCoverageDetailsMobile",
+					"pattern": "CriticalEventCoverageDetailsMobile/{ObjectID}/:?query:",
+					"target": [
+						"CriticalEventCoverageDetailsMobile"
+					]
+				},
+				{
+					"name": "GuidedSolutionSupport",
+					"pattern": "GuidedSolutionSupport/:?query:",
+					"target": [
+						"GuidedSolutionSupport"
+					]
+				},
+				{
+					"name": "CaseDetails",
+					"pattern": "Case/{CaseId}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"CaseDetails"
+					]
+				},
+				{
+					"name": "CaseDetailsMobile",
+					"pattern": "CaseMobile/{CaseId}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"CaseDetailsMobile"
+					]
+				},
+				{
+					"name": "CCMDetails",
+					"pattern": "CCMDetails/{CaseId}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"CaseDetails"
+					]
+				},
+				{
+					"name": "CCMDetailsMobile",
+					"pattern": "CCMDetailsMobile/{CaseId}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"CaseDetailsMobile"
+					]
+				},
+				{
+					"name": "Solution",
+					"pattern": "Solution/{Solution}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"Solution"
+					]
+				},
+				{
+					"name": "SolutionMobile",
+					"pattern": "SolutionMobile/{Solution}/:?query:",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"SolutionMobile"
+					]
+				},
+				{
+					"name": "GlobalEscalation",
+					"pattern": "GlobalEscalation/:?query:",
+					"target": [
+						"GlobalEscalation"
+					]
+				},
+				{
+					"name": "GlobalEscalationMobile",
+					"pattern": "GlobalEscalationMobile/:?query:",
+					"target": [
+						"GlobalEscalationMobile"
+					]
+				},
+				{
+					"name": "TopCriticalCustomers",
+					"pattern": "TopCriticalCustomers/:?query:",
+					"target": [
+						"TopCriticalCustomers"
+					]
+				},
+				{
+					"name": "TopCriticalCustomersMobile",
+					"pattern": "TopCriticalCustomersMobile/:?query:",
+					"target": [
+						"TopCriticalCustomersMobile"
+					]
+				},
+				{
+					"name": "CrossIssues",
+					"pattern": "CrossIssues/:?query:",
+					"target": [
+						"CrossIssues"
+					]
+				},
+				{
+					"name": "CrossIssueDetails",
+					"pattern": "CrossIssue/{objectId}/:?query:",
+					"target": [
+						"CrossIssueDetails"
+					]
+				},
+				{
+					"name": "BusinessDownSituation",
+					"pattern": "BusinessDownSituation/:?query:",
+					"target": [
+						"BusinessDownSituation"
+					]
+				},
+				{
+					"name": "BusinessDownSituationMobile",
+					"pattern": "BusinessDownSituationMobile/:?query:",
+					"target": [
+						"BusinessDownSituationMobile"
+					]
+				},
+				{
+					"name": "PECriticalSituation",
+					"pattern": "PECriticalSituation/:?query:",
+					"target": [
+						"PECriticalSituation"
+					]
+				},
+				{
+					"name": "xtecEscalations",
+					"pattern": "xtecEscalations/:?query:",
+					"target": [
+						"xtecEscalations"
+					]
+				},
+				{
+					"pattern": "MCSCharts/:?query:",
+					"name": "MCSCharts",
+					"target": [
+						"MCSCharts"
+					]
+				},
+				{
+					"pattern": "MCSOperationalInformation/:?query:",
+					"name": "MCSOperationalInformation",
+					"target": [
+						"MCSOperationalInformation"
+					]
+				},
+				{
+					"pattern": "MCSOfflineReport/:?query:",
+					"name": "MCSOfflineReport",
+					"target": [
+						"MCSOfflineReport"
+					]
+				},
+				{
+					"name": "Subscriptions",
+					"pattern": "Subscriptions/:?query:",
+					"target": [
+						"Subscriptions"
+					]
+				},
+				{
+					"name": "Cim",
+					"pattern": "Cim/:?query:",
+					"target": [
+						"Cim"
+					]
+				},
+				{
+					"name": "ExecutiveGEM",
+					"pattern": "ExecutiveGEM/:?query:",
+					"target": [
+						"ExecutiveGEM"
+					]
+				},
+				{
+					"name": "ExecutiveBDM",
+					"pattern": "ExecutiveBDM/:?query:",
+					"target": [
+						"ExecutiveBDM"
+					]
+				},
+				{
+					"name": "ProductEscalation",
+					"pattern": "ProductEscalation/:?query:",
+					"target": [
+						"ProductEscalation"
+					]
+				},
+				{
+					"name": "ProductEscalationMobile",
+					"pattern": "ProductEscalationMobile/:?query:",
+					"target": [
+						"ProductEscalationMobile"
+					]
+				},
+				{
+					"name": "ProjectsOnWatchDetails",
+					"pattern": "ProjectsOnWatchDetails/{ProjectId}/:?query:",
+					"target": [
+						"ProjectsOnWatchDetails"
+					]
+				},
+				{
+					"name": "ProjectsOnWatchDetailsMobile",
+					"pattern": "ProjectsOnWatchDetailsMobile/{ProjectId}/:?query:",
+					"target": [
+						"ProjectsOnWatchDetailsMobile"
+					]
+				}
+			],
+			"targets": {
+				"TargetMain": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewName": "Main",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl"
+				},
+				"Global": {
+					"viewType": "XML",
+					"viewName": "Global",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"viewPath": "com.sap.mcconedashboard.view",
+					"clearControlAggregation": true,
+					"routerClass": "sap.m.routing.Router",
+					"async": true
+				},
+				"Customer": {
+					"viewType": "XML",
+					"viewName": "Customer",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"viewPath": "com.sap.mcconedashboard.view",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"clearControlAggregation": false
+				},
+				"CustomerMobile": {
+					"viewType": "XML",
+					"viewName": "CustomerMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"clearControlAggregation": false
+				},
+				"CREEngagements": {
+					"viewType": "XML",
+					"viewName": "CREEngagements",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MCCTags": {
+					"viewType": "XML",
+					"viewName": "MCCTags",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MCCTagsMobile": {
+					"viewType": "XML",
+					"viewName": "MCCTagsMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CrossIssues": {
+					"viewType": "XML",
+					"viewName": "CrossIssues",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CrossIssueDetails": {
+					"viewType": "XML",
+					"viewName": "CrossIssueDetails",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MissionRadar": {
+					"viewType": "XML",
+					"viewName": "MissionRadar",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalPeriodCoverage": {
+					"viewType": "XML",
+					"viewName": "CriticalPeriodCoverage",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalPeriodCoverageMobile": {
+					"viewType": "XML",
+					"viewName": "CriticalPeriodCoverageMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"EngagementTaskForces": {
+					"viewType": "XML",
+					"viewName": "EngagementTaskForces",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"EngagementTaskForcesMobile": {
+					"viewType": "XML",
+					"viewName": "EngagementTaskForcesMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CustomerVisits": {
+					"viewType": "XML",
+					"viewName": "CustomerVisits",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CustomerVisitsMobile": {
+					"viewType": "XML",
+					"viewName": "CustomerVisitsMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProjectsOnWatch": {
+					"viewType": "XML",
+					"viewName": "ProjectsOnWatch",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProjectsOnWatchMobile": {
+					"viewType": "XML",
+					"viewName": "ProjectsOnWatchMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CustomerTags": {
+					"viewType": "XML",
+					"viewName": "CustomerTags",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalEventCoverage": {
+					"viewType": "XML",
+					"viewName": "CriticalEventCoverage",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CREEngagementsMobile": {
+					"viewType": "XML",
+					"viewName": "CREEngagementsMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalEventCoverageMobile": {
+					"viewType": "XML",
+					"viewName": "CriticalEventCoverageMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalEventCoverageDetails": {
+					"viewType": "XML",
+					"viewName": "CriticalEventCoverageDetails",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalEventCoverageDetailsMobile": {
+					"viewType": "XML",
+					"viewName": "CriticalEventCoverageDetailsMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"TopCriticalCustomers": {
+					"viewType": "XML",
+					"viewName": "TopCriticalCustomers",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"TopCriticalCustomersMobile": {
+					"viewType": "XML",
+					"viewName": "TopCriticalCustomersMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"GuidedSolutionSupport": {
+					"viewType": "XML",
+					"viewName": "ProjectEngagementSupport",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalCustomerManagement": {
+					"viewType": "XML",
+					"viewName": "CriticalCustomerManagement",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CriticalCustomerManagementMobile": {
+					"viewType": "XML",
+					"viewName": "CriticalCustomerManagementMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"Outages": {
+					"viewType": "XML",
+					"viewName": "Outages",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"OutagesMobile": {
+					"viewType": "XML",
+					"viewName": "OutagesMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CaseDetails": {
+					"viewType": "XML",
+					"viewName": "Case",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"CaseDetailsMobile": {
+					"viewType": "XML",
+					"viewName": "CaseMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"Solution": {
+					"viewType": "XML",
+					"viewName": "Solution",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"SolutionMobile": {
+					"viewType": "XML",
+					"viewName": "SolutionMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"GlobalEscalation": {
+					"viewType": "XML",
+					"viewName": "GlobalEscalation",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"BusinessDownSituation": {
+					"viewType": "XML",
+					"viewName": "BusinessDownSituation",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"BusinessDownSituationMobile": {
+					"viewType": "XML",
+					"viewName": "BusinessDownSituationMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"PECriticalSituation": {
+					"viewType": "XML",
+					"viewName": "PECriticalSituation",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"xtecEscalations": {
+					"viewType": "XML",
+					"viewName": "xtecEscalations",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MCSCharts": {
+					"viewType": "XML",
+					"viewName": "MCSCharts",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MCSOperationalInformation": {
+					"viewType": "XML",
+					"viewName": "MCSOperationalInformation",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"MCSOfflineReport": {
+					"viewType": "XML",
+					"viewName": "MCSOfflineReport",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"Subscriptions": {
+					"viewType": "XML",
+					"viewName": "Subscriptions",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"Cim": {
+					"viewType": "XML",
+					"viewName": "Cim",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ExecutiveGEM": {
+					"viewType": "XML",
+					"viewName": "ExecutiveGEM",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ExecutiveBDM": {
+					"viewType": "XML",
+					"viewName": "ExecutiveBDM",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProductEscalation": {
+					"viewType": "XML",
+					"viewName": "ProductEscalation",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProductEscalationMobile": {
+					"viewType": "XML",
+					"viewName": "ProductEscalationMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"GlobalMobile": {
+					"viewType": "XML",
+					"viewName": "GlobalMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"clearControlAggregation": true,
+					"routerClass": "sap.m.routing.Router",
+					"async": true
+				},
+				"GlobalEscalationMobile": {
+					"viewType": "XML",
+					"viewName": "GlobalEscalationMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProjectsOnWatchDetails": {
+					"viewType": "XML",
+					"viewName": "ProjectsOnWatchDetails",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				},
+				"ProjectsOnWatchDetailsMobile": {
+					"viewType": "XML",
+					"viewName": "ProjectsOnWatchDetailsMobile",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.mcconedashboard.view.viewMobile",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

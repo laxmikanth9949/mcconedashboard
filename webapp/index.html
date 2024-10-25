@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
+
+	<title>MCC One Dashboard</title>
+
+	<script id="sap-ui-bootstrap" src="https://ui5.sap.com/1.120.1/resources/sap-ui-core.js"
+		data-sap-ui-libs="sap.m, sap.ui.table, sap.ui.core, sap.ui.layout, sap.uxap, sap.tnt, sap.suite.ui.commons, sap.suite.ui.microchart, sap.viz, sap.ui.vbm, sap.tnt, sap.gantt"
+		data-sap-ui-theme="sap_horizon" data-sap-ui-compatVersion="edge"
+		data-sap-ui-resourceroots='{"com.sap.mcconedashboard": "./"}'
+		data-sap-ui-oninit="module:sap/ui/core/ComponentSupport" data-sap-ui-preload="async"
+		data-sap-ui-appCachebuster="./">
+		</script>
+	<link rel="icon" href="image/SAP_Fiori_Launchpad_Icon_512.png" type="image/png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+		sap.ui.getCore().attachInit(function () {
+			new sap.m.Shell({
+				appWidthLimited: false,
+				app: new sap.ui.core.ComponentContainer({
+					height: "100%",
+					name: "com.sap.mcconedashboard"
+				})
+			}).placeAt("content");
+		});
+	</script>
+</head>
+
+<body class="sapUiBody sapUiSizeCompact" id="content">
+</body>
+
+</html>
