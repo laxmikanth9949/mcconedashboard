@@ -1,0 +1,27 @@
+{
+  "xsappname": "mcc-one-dashboard-xsuaa",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.user",
+      "description": "Can access MCC One Dashboard App"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "User",
+      "description": "MCC One Dashboard User - Can access MCC One Dashboard App",
+      "scope-references": [
+        "$XSAPPNAME.user"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+        "https://**.applicationstudio.cloud.sap/**",
+        "https://**.hana.ondemand.com/**",
+        "http://localhost:*/**"
+    ]
+}
+}
